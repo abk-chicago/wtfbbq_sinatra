@@ -9,16 +9,44 @@ ActiveRecord::Base.establish_connection(
 # try using c.log(:blue, "some text")
 c = Colourize.new
 
+# global app variables
+@account_message = ""
+@is_user_logged_in = false
+# end global app variables
+
 not_found do
   erb :notfound
 end
 
 get '/' do
+  @account_message = "Welcome to WTFBBQ!"
   c.log(:magenta, "Hey! You loaded the base resource route! whoa!")
   erb :index
 end
 
+# ==========
+# soon: Accounts controller
+# ==========
 
+get '/account' do
+  p 'This is the account login/register page'
+  @account_message = "Welcome! Please register or login!"
+  erb :account_create
+end
+
+get '/account/logout' do
+  @account_message = "THANK YOU FOR VISITING US! PLZ COME BACK TYYYYY!"
+  redirect '/'
+end
+
+get '/account/update' do
+  @account_message = "Did you move? We need to track.. err help you!"
+  erb :account_update
+end
+
+# ==========
+# soon: ingredients controller
+# ==========
 get '/ingredients' do
   Ingredient.all.to_json
 end

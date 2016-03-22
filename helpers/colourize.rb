@@ -14,3 +14,5 @@ class Colourize
     puts Rainbow(data.to_s).send(colour)
   end
 end
+c = Colourize.new
+c.log(:magenta, "yolo swag colourize in the sinatra apppssss")

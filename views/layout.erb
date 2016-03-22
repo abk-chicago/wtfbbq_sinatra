@@ -12,10 +12,10 @@
     <title>WTFBBF :. Got food? We can provide a recipe</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/full-width-pics.css" rel="stylesheet">
+    <link href="/css/full-width-pics.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,6 +31,16 @@
   <header class="image-bg-fluid-height">
     <img class="img-responsive img-center" src="/wtfbbq_logo.png" alt="">
   </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <%= @account_message %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= yield %>
 
