@@ -2,7 +2,9 @@ require './helpers/colourize'
 
 require './app'
 
-#require './models/account'
+require './models/account'
+require './models/ingredient'
+require './models/recipe'
 
 run Sinatra::Application
 
