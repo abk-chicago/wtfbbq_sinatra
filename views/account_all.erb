@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <% @all_users.each do |user| %>
+      ​
+        <li>
+          <%= user.name %> has <%= user.email %> with a bad password of <%= user.password_hash %>
+        </li>
+      ​
+      <% end %>
+      </div>
+    </div>
+</div>

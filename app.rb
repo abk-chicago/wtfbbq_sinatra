@@ -19,7 +19,7 @@ not_found do
 end
 
 get '/' do
-  @account_message = "Welcome to WTFBBQ!"
+  @account_message = "Something every time you load here..."
   c.log(:magenta, "Hey! You loaded the base resource route! whoa!")
   erb :index
 end
@@ -34,14 +34,63 @@ get '/account' do
   erb :account_create
 end
 
+post '/account/login' do
+  # assume this worked!
+  @all_users = Account.all # this kinda sucks IRL but SOOOOONNN
+  @all_users.each do |user|
+    c.log(:yellow, user.to_s)
+  end
+  redirect '/'
+end
+
 get '/account/logout' do
   @account_message = "THANK YOU FOR VISITING US! PLZ COME BACK TYYYYY!"
   redirect '/'
 end
 
+post '/account/create' do
+  #binding.pry
+  @is_user_duplicate = true
+  if (params[:password] != params[:password_conf])
+    status 403
+  end
+
+  @all_users = Account.all # this kinda sucks IRL but SOOOOONNN
+  @all_users.each do |user|
+    c.log(:yellow, user.to_s)
+    if (user.email == params[:email])
+      status 403
+    end
+  end
+
+  @new_user = Account.create({
+    :name => params[:name],
+    :email => params[:email],
+    :password_hash => params[:password].to_s.reverse # do not irl srs
+  })
+  # @new_user = Account.new
+  # @new_user.name = params[:name]
+  # @new_user.email = params[:email]
+  @new_user.save
+  redirect '/'
+end
+
 get '/account/update' do
+  @old_email = "james@codeforcoffee.org"
   @account_message = "Did you move? We need to track.. err help you!"
   erb :account_update
+end
+
+post '/account/update' do
+  @all_users = Account.all # this kinda sucks IRL but SOOOOONNN
+  @all_users.each do |user|
+    c.log(:yellow, user.to_s)
+  end
+end
+
+get '/account/all' do
+  @all_users = Account.all
+  erb :account_all
 end
 
 # ==========

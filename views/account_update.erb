@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="section-heading">Update your account</h1>
-                <form action="" method="post">
+                <form action="/account/update" method="post">
+                  <input type="hidden" name="old_email" value="<%= @old_email %>">
                   <input class="form-control" type="text" name="name" value="" placeholder="Your name">
                   <input class="form-control" type="text" name="email" value="" placeholder="Your email">
                   <input class="form-control" type="password" name="password" value="" placeholder="Your sekrit psswd">
