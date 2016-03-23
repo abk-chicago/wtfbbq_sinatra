@@ -55,6 +55,3 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-cross_origin
-
-BUNDLED WITH
-   1.11.2

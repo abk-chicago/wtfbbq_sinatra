@@ -4,6 +4,7 @@ require './helpers/colourize'
 require './controllers/application' # app.rb
 require './controllers/sauce' # SauceController
 require './controllers/account' #AccountController
+require './controllers/ingredient' # IngredientController
 
 require './models/account'
 require './models/ingredient'
@@ -11,9 +12,10 @@ require './models/recipe'
 require './models/sauce'
 
 # map root resource / to a controller
-map('/') { run ApplicationController }
-map('/sauce') { run SauceController }
-map('/account') { run AccountController }
+map('/')            { run ApplicationController }
+map('/sauce')       { run SauceController }
+map('/account')     { run AccountController }
+map('/ingredients') { run IngredientsController }
 # map('/lasers') { run LaserssssController }
 # map('/hotels') { run HotelsController }
 # map('/ingredients') { run IngredientsController }
