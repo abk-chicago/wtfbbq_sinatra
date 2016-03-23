@@ -1,12 +1,17 @@
+require 'sinatra/base' # we need sinatra first
 require './helpers/colourize'
 
-require './app'
+require './controllers/application' # app.rb
 
 require './models/account'
 require './models/ingredient'
 require './models/recipe'
 
-run Sinatra::Application
+# map root resource / to a controller
+map('/') { run ApplicationController }
+# map('/lasers') { run LaserssssController }
+# map('/hotels') { run HotelsController }
+# map('/ingredients') { run IngredientsController }
 
 # try using c.log(:blue, "some text")
 c = Colourize.new
@@ -28,12 +33,8 @@ after '/*' do
   c.log(:aliceblue, "Status: " + response.status.to_s)
   c.log(:aliceblue, "Response: " + response.body.to_s)
   c.log(:blue, "--------------------------")
-
 end
-# allow static files to be put in /public and hosted at localhost/*
-set :public_folder, File.dirname(__FILE__) + '/public'
-# set folder for templates to ../views, but make the path absolute
-set :views, File.dirname(__FILE__) + '/views'
+
 c.log(:red, "wtfbbq App is running!")
 c.log(:yellow, "Hope you're hungry!")
 # ----------------------------------------

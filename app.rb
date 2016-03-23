@@ -1,28 +1,3 @@
-require 'bundler'
-Bundler.require
-
-ActiveRecord::Base.establish_connection(
-  :adapter => 'postgresql',
-  :database => 'omg_wtfbbq_app_sinatra'
-)
-
-# try using c.log(:blue, "some text")
-c = Colourize.new
-
-# global app variables
-@account_message = ""
-@is_user_logged_in = false
-# end global app variables
-
-not_found do
-  erb :notfound
-end
-
-get '/' do
-  @account_message = "Something every time you load here..."
-  c.log(:magenta, "Hey! You loaded the base resource route! whoa!")
-  erb :index
-end
 
 # ==========
 # soon: Accounts controller
